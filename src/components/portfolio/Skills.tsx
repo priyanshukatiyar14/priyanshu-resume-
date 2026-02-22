@@ -17,6 +17,16 @@ export const Skills = () => {
     { title: "Payments", items: skills.payments, color: "from-green-500 to-emerald-500" },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
+  };
+
   return (
     <section id="skills" className="py-20 md:py-32" ref={ref}>
       <div className="section-container">
@@ -28,49 +38,49 @@ export const Skills = () => {
         >
           <span className="text-primary font-mono text-sm mb-4 block">// TECH STACK</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Skills & Technologies
+            Skills & <span className="text-gradient">Technologies</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Building robust backend systems with modern technologies and cloud-native architectures
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, categoryIndex) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {skillCategories.map((category) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + categoryIndex * 0.1 }}
-              className="p-6 rounded-xl bg-card border border-border card-hover group"
+              variants={cardVariants}
+              whileHover={{ y: -6, transition: { duration: 0.2 } }}
+              className="p-6 rounded-xl bg-card border border-border card-hover group relative overflow-hidden"
             >
-              <div className="flex items-center gap-3 mb-5">
-                <div
-                  className={`w-3 h-3 rounded-full bg-gradient-to-r ${category.color}`}
-                />
-                <h3 className="font-semibold text-lg">{category.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.items.map((skill, skillIndex) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{
-                      duration: 0.3,
-                      delay: 0.2 + categoryIndex * 0.1 + skillIndex * 0.03,
-                    }}
-                    className="skill-tag"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${category.color} group-hover:scale-150 transition-transform duration-300`} />
+                  <h3 className="font-semibold text-lg">{category.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.items.map((skill) => (
+                    <motion.span
+                      key={skill}
+                      whileHover={{ scale: 1.08 }}
+                      className="skill-tag cursor-default"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Additional Stats */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -82,16 +92,15 @@ export const Skills = () => {
             { value: "10+", label: "Projects Delivered" },
             { value: "5+", label: "Products Built" },
             { value: "15+", label: "AWS Services" },
-          ].map((stat, index) => (
-            <div
+          ].map((stat) => (
+            <motion.div
               key={stat.label}
-              className="text-center p-6 rounded-xl bg-secondary/50 border border-border"
+              whileHover={{ scale: 1.05 }}
+              className="text-center p-6 rounded-xl bg-secondary/50 border border-border hover:border-primary/30 transition-colors"
             >
-              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
-                {stat.value}
-              </div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">{stat.value}</div>
               <div className="text-sm text-muted-foreground">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
