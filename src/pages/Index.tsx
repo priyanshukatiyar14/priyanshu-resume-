@@ -8,23 +8,34 @@ import { Experience } from "@/components/portfolio/Experience";
 import { Achievements } from "@/components/portfolio/Achievements";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
+import type { ThemeId } from "@/components/portfolio/ThemeSwitcher";
+
+const themeClasses: Record<ThemeId, string> = {
+  light: "",
+  dark: "dark",
+  cyberpunk: "cyberpunk",
+  ocean: "ocean",
+  sunset: "sunset",
+  emerald: "emerald",
+};
 
 const Index = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [theme, setTheme] = useState<ThemeId>(() => {
+    return (localStorage.getItem("portfolio-theme") as ThemeId) || "dark";
+  });
 
   useEffect(() => {
-    // Default to dark mode
-    document.documentElement.classList.add("dark");
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark");
-  };
+    const root = document.documentElement;
+    // Remove all theme classes
+    root.classList.remove("dark", "cyberpunk", "ocean", "sunset", "emerald");
+    const cls = themeClasses[theme];
+    if (cls) root.classList.add(cls);
+    localStorage.setItem("portfolio-theme", theme);
+  }, [theme]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Header isDark={isDark} toggleTheme={toggleTheme} />
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-400">
+      <Header currentTheme={theme} onThemeChange={setTheme} />
       <main>
         <Hero />
         <About />
