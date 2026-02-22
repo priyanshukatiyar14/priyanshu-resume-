@@ -35,8 +35,8 @@ export const Contact = () => {
             Get In Touch
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            I'm currently open to new opportunities. Whether you have a question, a project idea, 
-            or just want to connect – feel free to reach out!
+            Always happy to connect and discuss ideas, backend architecture, or collaborations.
+            If you have a question or want to start a conversation, feel free to reach out.
           </p>
         </motion.div>
 

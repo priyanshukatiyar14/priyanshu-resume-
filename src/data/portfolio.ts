@@ -8,27 +8,26 @@ export const portfolioData = {
     email: "priyanshukatiyar111@gmail.com",
     phone: "+91 6387139727",
     linkedin: "https://linkedin.com/in/priyanshukatiyar",
-    github: "https://github.com/priyanshukatiyar",
+    github: "https://github.com/priyanshukatiyar14",
     resumeUrl: "/resume.pdf",
   },
 
   about: {
     headline: "Crafting Scalable Backend Systems",
-    description: `Backend-focused software developer with 1.5+ years of experience building production-grade SaaS products, 
-    financial analysis tools, and security-focused document forensics systems. I specialize in designing 0-to-1 solutions, 
-    leading engineering teams, and delivering scalable backend architectures using Python, Django Rest Framework, AWS, 
+    description: `Backend-focused software developer with 2.5+ years of experience building production-grade SaaS products, 
+    financial analysis tools, and security-focused document forensics systems. I specialize in designing 0-to-1 solutions and delivering scalable backend architectures using Python, Flask, FastAPI, Django Rest Framework, AWS, 
     and modern cloud-native technologies.`,
     highlights: [
       "Built PDF forensics tools detecting document tampering & fraud",
       "Designed financial analysis systems processing bank statements",
-      "Led development teams delivering enterprise SaaS products",
+      "Led development teams, conducted code reviews, and mentored junior developers",
       "Expertise in AWS cloud architecture & serverless systems",
     ],
   },
 
   skills: {
     languages: ["Python", "C++", "SQL"],
-    frameworks: ["Django Rest Framework", "Flask", "LangChain"],
+    frameworks: ["Django Rest Framework", "Flask", "FastAPI", "LangChain"],
     databases: ["PostgreSQL", "MongoDB", "DynamoDB", "SQLite"],
     cloud: [
       "AWS S3",
@@ -53,7 +52,7 @@ export const portfolioData = {
 
   experience: [
     {
-      company: "BeFiSc / FinEye",
+      company: "BeFiSc",
       location: "Noida",
       role: "Backend Developer (Python)",
       period: "Dec 2024 - Present",
@@ -74,11 +73,11 @@ export const portfolioData = {
           description:
             "Implemented TSP module with consent management, secure data fetch, and ReBIT-compliant authentication flows.",
         },
-        {
-          title: "Team Leadership",
-          description:
-            "Led developer team, conducted code reviews, assigned tasks, and provided mentorship for quality deliverables.",
-        },
+        // {
+        //   title: "Team Leadership",
+        //   description:
+        //     "Led developer team, conducted code reviews, assigned tasks, and provided mentorship for quality deliverables.",
+        // },
       ],
     },
     {
@@ -126,8 +125,8 @@ export const portfolioData = {
       title: "TamperProof",
       subtitle: "Document Forensics Platform",
       problem: "Organizations need reliable methods to detect tampered PDFs and ensure document authenticity for compliance.",
-      solution: "Built comprehensive forensic analysis tool detecting digital signature manipulation, embedded file modifications, and text alterations with detailed reporting.",
-      tech: ["Python", "AWS Textract", "PostgreSQL", "Django REST"],
+      solution: "Built comprehensive forensic analysis tool detecting digital signature manipulation, embedded file modifications, editor identification, and text alterations with detailed reporting.",
+      tech: ["Python", "Flask", "MongoDB"],
       impact: "Enables financial institutions to verify document authenticity, preventing fraud in loan applications and compliance documents.",
       featured: true,
     },
@@ -135,17 +134,17 @@ export const portfolioData = {
       title: "Bank Statement Analyzer",
       subtitle: "Financial Intelligence Tool",
       problem: "Manual review of bank statements for loan processing is time-consuming and error-prone.",
-      solution: "Automated OCR-based extraction with intelligent categorization, fraud detection, AML checks, and comprehensive financial health scoring.",
-      tech: ["Python", "OCR", "AWS Lambda", "PostgreSQL"],
+      solution: "Automated OCR-based extraction with intelligent categorization, fraud detection, AML checks, and comprehensive financial health scoring. Supported multiple account types and formats for seamless integration into loan processing workflows.",
+      tech: ["Python", "Flask", "MongoDB", "Microservices", "AWS"],
       impact: "Reduced statement analysis time from hours to minutes with improved accuracy in fraud detection.",
       featured: true,
     },
     {
-      title: "Kwipo",
+      title: "FanFare",
       subtitle: "SaaS Employee Engagement",
       problem: "Companies struggle to recognize and celebrate employee achievements in real-time across distributed teams.",
       solution: "Built desktop notification platform integrating with Salesforce to automatically celebrate sales achievements and milestones.",
-      tech: ["Django", "Node.js", "Stripe", "AWS", "Pusher"],
+      tech: ["Python", "Django REST", "Stripe", "AWS", "Pusher", "Salesforce API", "WebSockets", "Microservices", "Serverless", "CI/CD", "PostgreSQL"],
       impact: "Improved employee engagement metrics and workplace positivity for enterprise clients.",
       featured: true,
     },
@@ -154,10 +153,19 @@ export const portfolioData = {
       subtitle: "Secure Financial Data Pipeline",
       problem: "Financial institutions need secure, compliant methods to access customer financial data with proper consent.",
       solution: "Implemented ReBIT-compliant TSP module with consent management and secure data fetch flows.",
-      tech: ["Python", "Django REST", "AWS", "Security"],
+      tech: ["Python", "Flask", "MongoDB", "Security"],
       impact: "Enabled compliant data sharing between financial institutions under India's AA framework.",
       featured: false,
     },
+    {
+      title: "Zeiss Lens Selector",
+      subtitle: "Medical Decision Support Tool",
+      problem: "Optometrists need efficient tools to recommend the best lenses based on complex patient data.",
+      solution: "Developed decision support tool with algorithms analyzing prescriptions and lifestyle factors for optimal lens recommendations.",
+      tech: ["Python", "Django REST", "Azure","PostgreSQL"],
+      impact: "Streamlined lens selection process for optometrists, improving patient satisfaction and sales.",
+      featured: true,
+    }
   ],
 
   achievements: [
@@ -168,7 +176,7 @@ export const portfolioData = {
     },
     {
       title: "0-to-1 Product Development",
-      description: "Independently designed and delivered production-ready forensics tools",
+      description: "Independently designed and delivered production-ready forensics tools for document authenticity verification and financial analysis systems from scratch",
       icon: "rocket",
     },
     {

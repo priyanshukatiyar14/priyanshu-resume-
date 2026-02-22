@@ -36,7 +36,7 @@ export const Hero = () => {
             <MapPin className="h-4 w-4 text-primary" />
             <span className="text-sm text-muted-foreground">{personal.location}</span>
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-sm text-muted-foreground">Available for opportunities</span>
+            <span className="text-sm text-muted-foreground">Open to meaningful conversations</span>
           </motion.div>
 
           {/* Name */}
@@ -79,7 +79,7 @@ export const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-wrap justify-center gap-2 mb-10"
           >
-            {["Python", "Django REST", "AWS", "PostgreSQL", "LangChain"].map((tech) => (
+            {["Python","Flask", "Django REST","FastAPI", "AWS", "PostgreSQL","MongoDB"].map((tech) => (
               <span
                 key={tech}
                 className="px-3 py-1 text-xs font-mono bg-secondary/50 text-muted-foreground rounded-md border border-border"

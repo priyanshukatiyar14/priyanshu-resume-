@@ -78,7 +78,7 @@ export const Skills = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { value: "1.5+", label: "Years Experience" },
+            { value: "2.5+", label: "Years Experience" },
             { value: "10+", label: "Projects Delivered" },
             { value: "5+", label: "Products Built" },
             { value: "15+", label: "AWS Services" },
