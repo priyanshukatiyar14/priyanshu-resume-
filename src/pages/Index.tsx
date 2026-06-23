@@ -4,43 +4,34 @@ import { Hero } from "@/components/portfolio/Hero";
 import { About } from "@/components/portfolio/About";
 import { Skills } from "@/components/portfolio/Skills";
 import { Projects } from "@/components/portfolio/Projects";
+import { PersonalProjects } from "@/components/portfolio/PersonalProjects";
 import { Experience } from "@/components/portfolio/Experience";
 import { Achievements } from "@/components/portfolio/Achievements";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
-import type { ThemeId } from "@/components/portfolio/ThemeSwitcher";
-
-const themeClasses: Record<ThemeId, string> = {
-  light: "",
-  dark: "dark",
-  cyberpunk: "cyberpunk",
-  ocean: "ocean",
-  sunset: "sunset",
-  emerald: "emerald",
-};
 
 const Index = () => {
-  const [theme, setTheme] = useState<ThemeId>(() => {
-    return (localStorage.getItem("portfolio-theme") as ThemeId) || "dark";
-  });
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    const root = document.documentElement;
-    // Remove all theme classes
-    root.classList.remove("dark", "cyberpunk", "ocean", "sunset", "emerald");
-    const cls = themeClasses[theme];
-    if (cls) root.classList.add(cls);
-    localStorage.setItem("portfolio-theme", theme);
-  }, [theme]);
+    // Default to dark mode
+    document.documentElement.classList.add("dark");
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+    document.documentElement.classList.toggle("dark");
+  };
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-400">
-      <Header currentTheme={theme} onThemeChange={setTheme} />
+    <div className="min-h-screen bg-background text-foreground">
+      <Header isDark={isDark} toggleTheme={toggleTheme} />
       <main>
         <Hero />
         <About />
         <Skills />
         <Projects />
+        <PersonalProjects />
         <Experience />
         <Achievements />
         <Contact />

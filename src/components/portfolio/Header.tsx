@@ -1,29 +1,32 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Moon, Sun, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { portfolioData } from "@/data/portfolio";
-import { ThemeSwitcher, type ThemeId } from "./ThemeSwitcher";
 
 interface HeaderProps {
-  currentTheme: ThemeId;
-  onThemeChange: (theme: ThemeId) => void;
+  isDark: boolean;
+  toggleTheme: () => void;
 }
 
-export const Header = ({ currentTheme, onThemeChange }: HeaderProps) => {
+export const Header = ({ isDark, toggleTheme }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/90 backdrop-blur-lg border-b ${
-        isScrolled ? "border-border shadow-sm" : "border-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="section-container">
@@ -48,8 +51,13 @@ export const Header = ({ currentTheme, onThemeChange }: HeaderProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {portfolioData.navigation.map((item) => (
-              <a key={item.href} href={item.href} className="nav-link">
+            {portfolioData.navigation.map((item, index) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav-link"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 {item.label}
               </a>
             ))}
@@ -57,12 +65,19 @@ export const Header = ({ currentTheme, onThemeChange }: HeaderProps) => {
 
           {/* Actions */}
           <motion.div
-            className="flex items-center gap-2 md:gap-3"
+            className="flex items-center gap-2 md:gap-4"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <ThemeSwitcher currentTheme={currentTheme} onThemeChange={onThemeChange} />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
 
             <Button
               variant="outline"
@@ -76,13 +91,18 @@ export const Header = ({ currentTheme, onThemeChange }: HeaderProps) => {
               </a>
             </Button>
 
+            {/* Mobile menu button */}
             <Button
               variant="ghost"
               size="icon"
               className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </motion.div>
         </nav>
@@ -108,7 +128,12 @@ export const Header = ({ currentTheme, onThemeChange }: HeaderProps) => {
                     {item.label}
                   </a>
                 ))}
-                <Button variant="outline" size="sm" className="w-fit border-primary/50 text-primary" asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-fit border-primary/50 text-primary"
+                  asChild
+                >
                   <a href={portfolioData.personal.resumeUrl} download>
                     <Download className="h-4 w-4 mr-2" />
                     Download Resume

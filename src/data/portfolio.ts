@@ -7,6 +7,7 @@ export const portfolioData = {
     location: "Noida, India",
     email: "priyanshukatiyar111@gmail.com",
     phone: "+91 6387139727",
+    whatsapp: "+916387139727",
     linkedin: "https://linkedin.com/in/priyanshukatiyar",
     github: "https://github.com/priyanshukatiyar14",
     resumeUrl: "/resume.pdf",
@@ -186,6 +187,45 @@ export const portfolioData = {
     },
   ],
 
+  personalProjects: [
+    {
+      name: "AITextToImageConverter",
+      description: "Python tool that converts text prompts into AI-generated images using generative image models.",
+      tech: ["Python", "AI", "Image Generation"],
+      url: "https://github.com/priyanshukatiyar14/AITextToImageConverter",
+    },
+    {
+      name: "Email_Formatter",
+      description: "Utility for cleaning, structuring and formatting raw email content into well-formed templates.",
+      tech: ["Python", "Automation"],
+      url: "https://github.com/priyanshukatiyar14/Email_Formatter",
+    },
+    {
+      name: "HardRockCafe_BE_Python",
+      description: "Backend service for a Hard Rock Cafe themed application with menu, orders and core APIs.",
+      tech: ["Python", "REST API", "Backend"],
+      url: "https://github.com/priyanshukatiyar14/HardRockCafe_BE_Python",
+    },
+    {
+      name: "Portfolio",
+      description: "Personal portfolio project showcasing developer work, experiments and side projects.",
+      tech: ["Python"],
+      url: "https://github.com/priyanshukatiyar14/Portfolio",
+    },
+    {
+      name: "log-monitoring",
+      description: "Log monitoring utility for parsing, tracking and alerting on application log events.",
+      tech: ["Python", "Monitoring", "DevOps"],
+      url: "https://github.com/priyanshukatiyar14/log-monitoring",
+    },
+    {
+      name: "stability-ai-integration-api",
+      description: "API integration with Stability AI for programmatic access to image generation endpoints.",
+      tech: ["Python", "Stability AI", "REST API"],
+      url: "https://github.com/priyanshukatiyar14/stability-ai-integration-api",
+    },
+  ],
+
   education: {
     degree: "Bachelor of Engineering",
     field: "Electronics & Communication",
@@ -198,6 +238,7 @@ export const portfolioData = {
     { label: "About", href: "#about" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
+    { label: "Personal", href: "#personal-projects" },
     { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ],
